@@ -10,11 +10,13 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 const numCpus = os.cpus().length;
 dotenv.config();
+const __dirname = path.resolve();
 
 
 // Middleware
 app.use(cors());
 app.use(express.json({ limit: '2mb' }));
+app.use(express.urlencoded({ extended: true }));
 // app.use((req, res, next) => {
 //   const filePath = new URL("./log/request.json", import.meta.url).pathname;
 //   const dirPath = path.dirname(filePath);
@@ -52,6 +54,12 @@ app.use(express.json({ limit: '2mb' }));
 //   next();
 // });
 app.use("/api/v1", infoAuthRoutes);
+
+app.use(express.static(path.join(__dirname, "/frontend/dist")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
+});
 
 if (cluster.isPrimary) {
   console.log(`Primary ${process.pid} is running`);
