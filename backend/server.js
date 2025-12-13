@@ -3,6 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import cluster from "cluster";
 import os from "os";
+import path from "path";
 import connectToMongoDB from './db/connectToMongoDB1.js';
 import infoAuthRoutes from "./routes/info.routes.js"
 
