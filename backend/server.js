@@ -36,7 +36,7 @@ const corsOptions = {
   credentials: true
 };
 
-app.enable('trust proxy');
+app.enable('trust proxy', 1);
 
 app.use(cors(corsOptions));
 app.use(express.json({ limit: '2mb' }));
@@ -46,15 +46,12 @@ app.use((req, res, next) => {
 
   res.removeHeader("x-powered-by");
 
+  // Enforce HTTPS (non-DEV)
   if (process.env.MODE !== "DEV") {
-    if (req.secure) {
-      // Request is HTTPS, proceed
-      next();
-    } else {
-      // Request is HTTP, block or redirect
-      res.status(403).send('HTTPS required');
-      // OR to redirect:
-      // res.redirect(`https://${req.headers.host}${req.url}`);
+    if (!req.secure) {
+      return res.status(403).send("HTTPS required");
+      // OR redirect:
+      // return res.redirect(`https://${req.headers.host}${req.url}`);
     }
   }
 
@@ -65,8 +62,8 @@ app.use((req, res, next) => {
     }
   }
 
-  // Allow only GET and POST
-  if (req.method !== "GET" && req.method !== "POST" && req.method !== "OPTIONS") {
+  // Allow only GET, POST, OPTIONS
+  if (!["GET", "POST", "OPTIONS"].includes(req.method)) {
     return res.status(405).json({ error: "Method Not Allowed" });
   }
 
