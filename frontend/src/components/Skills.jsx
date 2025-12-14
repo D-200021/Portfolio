@@ -5,7 +5,7 @@ export default function Skills() {
         {
             icon: <Layout className="w-5 h-5" />,
             title: "Frontend",
-            skills: ["React.js", "Next.js", "TypeScript", "Tailwind CSS", "Redux"]
+            skills: ["React.js", "Next.js", "TypeScript", "Tailwind CSS", "Redux", "Zustand"]
         },
         {
             icon: <Server className="w-5 h-5" />,
@@ -15,12 +15,12 @@ export default function Skills() {
         {
             icon: <Database className="w-5 h-5" />,
             title: "Database",
-            skills: ["MongoDB", "PostgreSQL", "Redis", "Prisma", "Mongoose"]
+            skills: ["MongoDB", "Redis", "Mongoose", "Firebase"]
         },
         {
             icon: <Cpu className="w-5 h-5" />,
             title: "DevOps",
-            skills: ["Docker", "CI/CD", "AWS", "Git", "Linux"]
+            skills: ["CI/CD", "AWS", "Git", "Linux"]
         }
     ];
 

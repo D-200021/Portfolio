@@ -16,7 +16,6 @@ export default function App() {
       const apiRes = await fetch("/api/v1/", { method: "GET" });
       const parsedRes = await apiRes.json();
       if (parsedRes.status) {
-        console.log(parsedRes.content);
         setData(parsedRes.content);
       }
     } catch (error) {
@@ -155,7 +154,7 @@ export default function App() {
                     <Mail className="w-5 h-5" />
                   </a>
                   <div className="ml-2">
-                    <VisitorCounter />
+                    <VisitorCounter data={data.totalVisitors} />
                   </div>
                 </div>
               </div>
@@ -262,7 +261,7 @@ export default function App() {
         {/* Footer */}
         <footer className="py-8 border-t border-slate-800">
           <div className="max-w-7xl mx-auto px-6 text-center text-slate-400">
-            <p>© {new Date().getFullYear()} Dhruv Sheth. Built with React & Tailwind CSS</p>
+            <p>© {new Date().getFullYear()} Dhruv Sheth. </p>
           </div>
         </footer>
       </div>

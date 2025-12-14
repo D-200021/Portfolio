@@ -15,9 +15,63 @@ const __dirname = path.resolve();
 
 
 // Middleware
-app.use(cors());
+const allowedOrigins = ["https://dhruvsheth.onrender.com"];
+
+if (process.env.MODE === "DEV") {
+  allowedOrigins.push("http://localhost:3000")
+}
+
+const corsOptions = {
+  origin: (origin, callback) => {
+    // Allow GET without origin (browser navigation, health checks)
+    if (!origin) return callback(null, true);
+
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Origin not allowed"));
+    }
+  },
+  methods: ["GET", "POST"],
+  credentials: true
+};
+
+app.enable('trust proxy');
+
+app.use(cors(corsOptions));
 app.use(express.json({ limit: '2mb' }));
 app.use(express.urlencoded({ extended: true }));
+app.use((req, res, next) => {
+  const origin = req.headers.origin;
+
+  res.removeHeader("x-powered-by");
+
+  if (process.env.MODE !== "DEV") {
+    if (req.secure) {
+      // Request is HTTPS, proceed
+      next();
+    } else {
+      // Request is HTTP, block or redirect
+      res.status(403).send('HTTPS required');
+      // OR to redirect:
+      // res.redirect(`https://${req.headers.host}${req.url}`);
+    }
+  }
+
+  // POST must always have a valid origin
+  if (req.method === "POST") {
+    if (!origin || !allowedOrigins.includes(origin)) {
+      return res.status(403).json({ error: "Invalid origin" });
+    }
+  }
+
+  // Allow only GET and POST
+  if (req.method !== "GET" && req.method !== "POST" && req.method !== "OPTIONS") {
+    return res.status(405).json({ error: "Method Not Allowed" });
+  }
+
+  next();
+});
 // app.use((req, res, next) => {
 //   const filePath = new URL("./log/request.json", import.meta.url).pathname;
 //   const dirPath = path.dirname(filePath);
