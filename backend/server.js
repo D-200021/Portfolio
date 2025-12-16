@@ -32,7 +32,7 @@ const corsOptions = {
       callback(new Error("Origin not allowed"));
     }
   },
-  methods: ["GET", "POST"],
+  methods: ["GET", "POST", "HEAD"],
   credentials: true
 };
 
@@ -63,7 +63,7 @@ app.use((req, res, next) => {
   }
 
   // Allow only GET, POST, OPTIONS
-  if (!["GET", "POST", "OPTIONS"].includes(req.method)) {
+  if (!["GET", "POST", "OPTIONS", "HEAD"].includes(req.method)) {
     return res.status(405).json({ error: "Method Not Allowed" });
   }
 
