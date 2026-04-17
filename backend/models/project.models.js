@@ -13,11 +13,27 @@ const ProjectSchema = new mongoose.Schema({
         type: [String],     // array of strings
         required: true,
     },
+    startDate: {
+        type: Date,
+        required: true,
+    },
+    endDate: {
+        type: Date,
+        default: null,
+    },
     link: {
         type: String,
         default: "",
     },
     image: {
+        type: String,
+        default: "",
+    },
+    company: {
+        type: String,
+        default: "",
+    },
+    role: {
         type: String,
         default: "",
     },

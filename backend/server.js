@@ -69,42 +69,7 @@ app.use((req, res, next) => {
 
   next();
 });
-// app.use((req, res, next) => {
-//   const filePath = new URL("./log/request.json", import.meta.url).pathname;
-//   const dirPath = path.dirname(filePath);
 
-//   // Ensure log directory exists
-//   if (!fs.existsSync(dirPath)) {
-//     fs.mkdirSync(dirPath, { recursive: true });
-//   }
-
-//   const logEntry = {
-//     ip: req.ip || req.connection.remoteAddress,
-//     method: req.method,
-//     url: req.originalUrl,
-//     time: new Date().toISOString(),
-//   };
-
-//   // If file exists, read, append, and write
-//   if (fs.existsSync(filePath)) {
-//     let logs = [];
-//     try {
-//       logs = JSON.parse(fs.readFileSync(filePath, "utf-8"));
-//       if (!Array.isArray(logs)) logs = [];
-//     } catch {
-//       logs = [];
-//     }
-//     logs.push(logEntry);
-//     fs.writeFileSync(filePath, JSON.stringify(logs, null, 2), "utf-8");
-//   }
-//   // If file doesn't exist, create it with the first log entry
-//   else {
-//     const logs = [logEntry];
-//     fs.writeFileSync(filePath, JSON.stringify(logs, null, 2), "utf-8");
-//   }
-
-//   next();
-// });
 app.use("/api/v1", infoAuthRoutes);
 
 app.use(express.static(path.join(__dirname, "frontend", "dist")));

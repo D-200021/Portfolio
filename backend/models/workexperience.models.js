@@ -39,6 +39,7 @@ const ExperienceSchema = new mongoose.Schema(
         // (Optional) Add start/end dates for better filtering if needed  
         startDate: {
             type: Date,
+            required:true
         },
         endDate: {
             type: Date,

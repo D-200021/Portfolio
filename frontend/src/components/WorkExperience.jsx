@@ -3,25 +3,6 @@ import { Briefcase, ChevronRight } from 'lucide-react';
 
 function WorkExperience({ data = [] }) {
 
-    // const [experiences, setExperiences] = useState([]);
-
-    // const fetchWorkExperience = async () => {
-    //     try {
-    //         const apiRes = await fetch("/api/v1/getexperiencedetail");
-    //         const parsedApi = await apiRes.json();
-    //         if (parsedApi.status) {
-    //             setExperiences(parsedApi.content);
-    //         }
-
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-    // }
-
-    // useEffect(() => {
-    //     fetchWorkExperience();
-    // }, [])
-
     return (
         <div className="relative">
             <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-gradient-to-b from-cyan-500 via-blue-500 to-purple-500"></div>
