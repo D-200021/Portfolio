@@ -1,16 +1,16 @@
 import { useState, useEffect, useRef } from 'react';
 import { ExternalLink, ChevronRight, ChevronLeft, Briefcase, Calendar } from 'lucide-react';
-import RepoLens from "@assets/RepoLens.png";
-import ChatBotBuilder from "@assets/ChatBotBuilder.png";
-import ExpenseGQL from "@assets/ExpenseGQL.png";
-import AIFormBuilder from "@assets/AIFormBuilder.png";
-import ChatApp from "@assets/ChatApp.png";
-import CodePen from "@assets/CodePen.png";
-import DocApp from "@assets/DocApp.png";
-import CodeEditor from "@assets/CodeEditor.png";
-import TodoApp from "@assets/TodoApp.png";
-import Sample from "@assets/Sample.png";
-import DDrive from "@assets/DDrive.png";
+import RepoLens from "../assets/RepoLens.png";
+import ChatBotBuilder from "../assets/ChatBotBuilder.png";
+import ExpenseGQL from "../assets/ExpenseGQL.png";
+import AIFormBuilder from "../assets/AIFormBuilder.png";
+import ChatApp from "../assets/ChatApp.png";
+import CodePen from "../assets/CodePen.png";
+import DocApp from "../assets/DocApp.png";
+import CodeEditor from "../assets/CodeEditor.png";
+import TodoApp from "../assets/TodoApp.png";
+import Sample from "../assets/Sample.png";
+import DDrive from "../assets/DDrive.png";
 
 const projectImageMap = {
   "RepoLens": RepoLens,

@@ -1,5 +1,5 @@
 import { Code, Terminal, Briefcase } from 'lucide-react';
-import profilePic from '@assets/Porfolio_Image.png';
+import profilePic from '../assets/Porfolio_Image.png';
 
 export default function AboutMe({ data = {} }) {
 
