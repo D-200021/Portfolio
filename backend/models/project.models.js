@@ -25,10 +25,14 @@ const ProjectSchema = new mongoose.Schema({
         type: String,
         default: "",
     },
-    image: {
+    uiImagePath: {
         type: String,
         default: "",
     },
+    // image: {
+    //     type: String,
+    //     default: "",
+    // },
     company: {
         type: String,
         default: "",

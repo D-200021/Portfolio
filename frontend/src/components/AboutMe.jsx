@@ -1,4 +1,5 @@
 import { Code, Terminal, Briefcase } from 'lucide-react';
+import profilePic from '@assets/Porfolio_Image.png';
 
 export default function AboutMe({ data = {} }) {
 
@@ -7,7 +8,7 @@ export default function AboutMe({ data = {} }) {
             <div>
                 <div className="relative">
                     <div className="absolute -inset-4 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-2xl blur-2xl opacity-20"></div>
-                    <img src={data[0]?.profilePic}
+                    <img src={profilePic}
                         alt="Your Image Alt Text"
                         className="relative rounded-2xl w-full aspect-square object-cover object-top border-2 border-slate-700"
                     />

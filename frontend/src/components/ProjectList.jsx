@@ -1,5 +1,30 @@
 import { useState, useEffect, useRef } from 'react';
 import { ExternalLink, ChevronRight, ChevronLeft, Briefcase, Calendar } from 'lucide-react';
+import RepoLens from "@assets/RepoLens.png";
+import ChatBotBuilder from "@assets/ChatBotBuilder.png";
+import ExpenseGQL from "@assets/ExpenseGQL.png";
+import AIFormBuilder from "@assets/AIFormBuilder.png";
+import ChatApp from "@assets/ChatApp.png";
+import CodePen from "@assets/CodePen.png";
+import DocApp from "@assets/DocApp.png";
+import CodeEditor from "@assets/CodeEditor.png";
+import TodoApp from "@assets/TodoApp.png";
+import Sample from "@assets/Sample.png";
+import DDrive from "@assets/DDrive.png";
+
+const projectImageMap = {
+  "RepoLens": RepoLens,
+  "ChatBotBuilder": ChatBotBuilder,
+  "ExpenseGQL": ExpenseGQL,
+  "AIFormBuilder": AIFormBuilder,
+  "ChatApp": ChatApp,
+  "CodePen": CodePen,
+  "DocApp": DocApp,
+  "CodeEditor": CodeEditor,
+  "TodoApp": TodoApp,
+  "Sample": Sample,
+  "DDrive": DDrive
+}
 
 export default function ProjectListAlt({ data = [] }) {
   const scrollContainerRef = useRef(null);
@@ -114,7 +139,7 @@ export default function ProjectListAlt({ data = [] }) {
 
             <div className="relative overflow-hidden h-48">
               <img
-                src={project.image}
+                src={projectImageMap[project.uiImagePath]}
                 alt={project.title}
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
               />
