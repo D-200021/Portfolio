@@ -24,9 +24,9 @@ export default function App() {
   }
 
   useEffect(() => {
-    fetch("/api/v1/visit", {
-      method: "POST",
-    });
+    // fetch("/api/v1/visit", {
+    //   method: "POST",
+    // });
 
     const handleScroll = () => {
       const sections = ['home', 'about', 'experience', 'projects', 'contact'];
